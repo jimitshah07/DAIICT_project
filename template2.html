@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        ul {
+            padding-left: 25px;
+            list-style-type: disc;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-info strong {
+            font-weight: normal;
+            color: #777;
+        }
+
+        .contact-info a {
+            font-weight: bold;
+        }
+
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            margin-top: 0;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .skills-list li {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 0;
+        }
+
+        .experience-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .experience-list li {
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #3498db;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h1>{{ name }}</h1>
+        <p class="contact-info">
+            <strong>Email:</strong> <a href="mailto:{{ email }}">{{ email }}</a> |
+            <strong>Phone:</strong> {{ phone }}
+        </p>
+        <p class="contact-info">
+            <strong>LinkedIn:</strong> <a href="{{ linkedin }}" target="_blank">{{ linkedin }}</a> |
+            <strong>GitHub:</strong> <a href="{{ github }}" target="_blank">{{ github }}</a>
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Summary</h2>
+        <p>{{ summary }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+            {% for skill in skills %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Experience</h2>
+        <ul class="experience-list">
+            {% for item in experience %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

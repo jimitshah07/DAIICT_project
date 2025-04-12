@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Choose a Resume Template</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-6">
+        {% for template in templates %}
+        <label class="cursor-pointer block border-2 rounded-lg hover:border-blue-500 transition">
+            <input type="radio" name="template" value="{{ template.id }}" class="hidden" required>
+            <img src="{{ template.image }}" alt="{{ template.name }}" class="w-full rounded">
+            <div class="p-2 text-center font-semibold">{{ template.name }}</div>
+        </label>
+        {% endfor %}
+    </div>
+
+    <div class="space-y-4">
+        <input type="text" name="name" placeholder="Full Name" class="w-full p-2 border rounded" required>
+        <input type="email" name="email" placeholder="Email" class="w-full p-2 border rounded" required>
+        <input type="text" name="phone" placeholder="Phone Number" class="w-full p-2 border rounded">
+        <textarea name="summary" placeholder="Professional Summary" rows="3" class="w-full p-2 border rounded"></textarea>
+        <input type="url" name="linkedin" placeholder="LinkedIn Profile" class="w-full p-2 border rounded">
+        <input type="url" name="github" placeholder="GitHub Profile" class="w-full p-2 border rounded">
+        <textarea name="skills" placeholder="Skills (comma separated)" class="w-full p-2 border rounded"></textarea>
+        <textarea name="experience" placeholder="Experience (comma separated)" class="w-full p-2 border rounded"></textarea>
+    </div>
+
+    <button type="submit" class="mt-6 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Generate Resume</button>
+</form>
+
+<style>
+    input[type="radio"]:checked + img {
+        border: 3px solid #3b82f6;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-xl font-semibold">Career Chatbot</h2>
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="message" placeholder="Type your interest like programming,data,marketing,design,management,finance,hr,sales,education" class="border p-2 w-full">
+  <button type="submit" class="mt-2 bg-blue-500 text-white px-4 py-2">Ask</button>
+</form>
+
+{% if response %}
+  <div class="mt-4 p-4 bg-gray-100 rounded">
+    <strong>Advisor:</strong> {{ response }}
+  </div>
+  <div class="resources-container mt-6">
+
+    {% if career_name %}
+    <h2 class="text-xl font-bold">Career: {{ career_name }}</h2>
+    {% endif %}
+
+    <button class="toggle-btn" onclick="togglePanel('skills')">🎯 Skill Resources</button>
+    <div id="skills" class="collapsible-panel hidden">
+        <ul>
+            {% for skill in skills %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <button class="toggle-btn" onclick="togglePanel('interview')">🗣️ Interview Questions</button>
+    <div id="interview" class="collapsible-panel hidden">
+        <ul>
+            {% for q in interview_questions %}
+            <li>{{ q }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <button class="toggle-btn" onclick="togglePanel('aptitude')">🧠 Aptitude Test</button>
+    <div id="aptitude" class="collapsible-panel hidden">
+        {% for test in aptitude_tests %}
+            <h3>{{ test.question }}</h3>
+            <ul>
+                {% for option in test.options %}
+                <li><input type="radio" name="q{{ forloop.counter }}"> {{ option }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+        <button onclick="alert('Test submitted!')">Submit Test</button>
+    </div>
+
+    <button class="toggle-btn" onclick="togglePanel('resume')">📄 Resume Template</button>
+    <div id="resume" class="collapsible-panel hidden">
+        <pre>{{ resume_template }}</pre>
+<a href="{% url 'resume_form' %}?career={{ career_name }}" class="inline-block mt-4 bg-green-600 text-white px-4 py-2 rounded">
+    Create Resume
+</a>
+    </div>
+</div>
+{% endif %}
+
+<style>
+    .toggle-btn {
+        background-color: #4f46e5;
+        color: white;
+        font-weight: 600;
+        padding: 12px 20px;
+        margin: 10px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        transition: background 0.3s ease;
+    }
+    .toggle-btn:hover {
+        background-color: #3730a3;
+    }
+    .collapsible-panel {
+        padding: 15px;
+        background-color: #f3f4f6;
+        border-left: 5px solid #4f46e5;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    function togglePanel(id) {
+        const allPanels = document.querySelectorAll('.collapsible-panel');
+        allPanels.forEach(panel => {
+            if (panel.id === id) {
+                panel.classList.toggle('hidden');
+            } else {
+                panel.classList.add('hidden');
+            }
+        });
+    }
+</script>
+
+{% endblock %}
