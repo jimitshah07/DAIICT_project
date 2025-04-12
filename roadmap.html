@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Step 4: Your Career Roadmap</title>
+</head>
+<body>
+    <h2>🗺️ Your Custom Career Plan</h2>
+
+    <ol>
+        {% for step in roadmap %}
+            <li>{{ step }}</li>
+        {% endfor %}
+    </ol>
+
+    <a href="{% url 'landing' %}">
+        <button>Start Over 🔄</button>
+    </a>
+</body>
+</html>

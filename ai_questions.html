@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Step 2: Deep Dive</title>
+</head>
+<body>
+    <h2>🤖 We’d like to understand you better</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for question in questions %}
+            <p><strong>{{ forloop.counter }}.</strong> {{ question }}</p>
+            <textarea name="q{{ forloop.counter }}" rows="2" required></textarea><br><br>
+        {% endfor %}
+        <button type="submit">Next ➡️</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Step 1: Tell Us About You</title>
+</head>
+<body>
+    <h2>✨ Let's start with some basics</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>Tech Stack (comma-separated):</label><br>
+        <input type="text" name="tech_stack" required><br><br>
+
+        <label>Years of Experience:</label><br>
+        <input type="text" name="experience" required><br><br>
+
+        <label>What are you passionate about?</label><br>
+        <textarea name="passion" rows="3" required></textarea><br><br>
+
+        <button type="submit">Continue ➡️</button>
+    </form>
+</body>
+</html>

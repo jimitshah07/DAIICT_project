@@ -1,0 +1,27 @@
+[
+    {
+      "role": "UX Designer",
+      "company": "TechCorp",
+      "description": "Design intuitive and beautiful user experiences.",
+      "skills": ["UX Design", "Creativity", "Communication"],
+      "location": "Remote",
+      "country": "USA"
+    },
+    {
+      "role": "Data Analyst",
+      "company": "DataX",
+      "description": "Analyze data trends and provide insights.",
+      "skills": ["Python", "Excel", "Visualization"],
+      "location": "Hybrid",
+      "country": "UK"
+    },
+    {
+        "role": "Software Engineer",
+        "company": "CodeBase",
+        "description": "Develop and maintain software applications.",
+        "skills": ["Python", "Debugging", "Teamwork"],
+        "location": "Remote",
+        "country": "India"
+    }
+  ]
+  
