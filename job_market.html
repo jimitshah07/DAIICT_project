@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Job Market Analysis{% endblock %}
+{% block content %}
+
+<h2 style="text-align: center; margin-top: 30px; color: #ffd700;">Current Job Market Trends</h2>
+
+<canvas id="jobChart" width="600" height="300" style="margin: 40px auto; display: block;"></canvas>
+
+<!-- JSON-safe data injection -->
+{{ job_titles|json_script:"job-titles-data" }}
+{{ demand_scores|json_script:"demand-scores-data" }}
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const jobTitles = JSON.parse(document.getElementById('job-titles-data').textContent);
+    const demandScores = JSON.parse(document.getElementById('demand-scores-data').textContent);
+
+    const ctx = document.getElementById('jobChart').getContext('2d');
+    const jobChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: jobTitles,
+            datasets: [{
+                label: 'Demand Score',
+                data: demandScores,
+                backgroundColor: '#ffd700',
+                borderColor: '#ffa500',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        color: '#ffd700'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#ffd700'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#ffd700'
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<!-- Job Opportunities Section -->
+<h2 style="text-align: center; margin: 50px 0 20px; color: #ffd700;">Job Opportunities</h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px;">
+    <!-- {% for job in jobs %}
+    <div style="background-color: #002b5c; border: 1px solid #ffd700; border-radius: 12px; width: 240px; text-align: center; color: #ffd700; padding: 16px;">
+        <img src="{{ job.image_url }}" alt="{{ job.title }}" style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px;">
+        <h3 style="margin-top: 10px;">{{ job.title }}</h3>
+        <p>{{ job.description|truncatechars:80 }}</p>
+    </div>
+    {% endfor %} -->
+</div>
+
+{% endblock %}

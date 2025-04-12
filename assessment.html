@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Assessment</title>
+</head>
+<body>
+    <h1>Skills Assessment</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label><input type="checkbox" name="skills" value="Software Engineer"> Software Engineer</label><br>
+        <label><input type="checkbox" name="skills" value="Data Scientist"> Data Scientist</label><br>
+        <label><input type="checkbox" name="skills" value="Product Manager"> Product Manager</label><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

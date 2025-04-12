@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Home - Skill Assist{% endblock %}
+{% block content %}
+
+<section class="welcome">
+    <h2>Welcome to Career Advisor</h2>
+    <h3 class="scroll-text"><marquee direction="left">Intelligent Virtual Career Advisor</marquee></h3>
+    <p>1. Skills assessment</p>
+    <p>2. Job market analysis</p>
+    <p>3. Resume and interview tips</p>
+    <p>4. Personalized career path recommendations</p>                
+    <p>5. Integrated network analysis</p>
+</section>
+
+<section class="features">
+    <div class="feature-box">
+        <h3>Skill Assessment</h3>
+        <p>Identify your strengths and improve your weaknesses with our tailored assessments.</p>
+    </div>
+    <div class="feature-box">
+        <h3>Job Market Analysis</h3>
+        <p>Understand which skills are in demand and how to position yourself accordingly.</p>
+    </div>
+    <div class="feature-box">
+        <h3>Resume & Interview Help</h3>
+        <p>Craft the perfect resume and ace interviews with our expert resources.</p>
+    </div>
+    <div class="feature-box">
+        <h3>Career Path Recommender</h3>
+        <p>Discover where your skills can take you with our personalized career path tool.</p>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <h2>How It Works</h2>
+    <p>1. Take the assessment → 2. Explore market insights → 3. Improve skills → 4. Launch your career</p>
+</section>
+
+<section class="get-started">
+    <h2>Ready to Begin?</h2>
+    <p>Kick off your career journey now with Skill Assist!</p>
+    <a href="{% url 'skill_assessment_start' %}">Get Started</a>
+</section>
+
+{% endblock %}

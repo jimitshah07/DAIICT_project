@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Skill Assessment{% endblock %}
+{% block content %}
+
+<section class="welcome">
+    <h2>Skill Assessment</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+{% endblock %}
