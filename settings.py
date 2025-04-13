@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'advisor',
+    'accounts',
 
 ]
 MIDDLEWARE = [
@@ -126,4 +127,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/skill-assessment/'
 LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/start-assessment/'
+LOGIN_URL = '/accounts/login/'
+
+
 
