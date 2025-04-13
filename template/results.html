@@ -1,0 +1,25 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Results</title>
+</head>
+<body>
+    <h1>Assessment Results</h1>
+    <ul>
+        {% for skill, data in recommendations.items %}
+            <li>
+                <strong>{{ skill }}</strong>: 
+                {% if data %}
+                    Demand - {{ data.demand }}, Average Salary - ${{ data.average_salary }}
+                {% else %}
+                    No data available for this skill.
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'assessment' %}">Go Back to Assessment</a>
+    <a href="{% url 'resume' %}">Get Resume Tips</a>
+</body>
+</html> -->

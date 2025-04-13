@@ -1,0 +1,26 @@
+<!-- {% extends 'base.html' %}
+
+{% block title %}Skill Assessment{% endblock %}
+
+{% block content %}
+<section class="welcome">
+    <h2>Skill Assessment</h2>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label for="user_name">Your Name:</label>
+        <input type="text" id="user_name" name="user_name" required><br><br>
+
+        {% for skill in skills %}
+            <label for="{{ skill.name }}">{{ skill.name }}:</label>
+            <select name="{{ skill.name }}" id="{{ skill.name }}">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="expert">Expert</option>
+            </select><br><br>
+        {% endfor %}
+        
+        <button type="submit">Submit</button>
+    </form>
+</section>
+{% endblock %} -->

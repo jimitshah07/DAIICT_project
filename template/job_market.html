@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% block title %}Job Market Analysis{% endblock %}
+{% block content %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #001f4d; /* Dark blue background */
+        color: #ffd700; /* Golden text */
+        margin: 0;
+        padding: 30px;
+    }
+
+    h1, h2 {
+        color: #ffd700;
+    }
+
+    .section {
+        background-color: #002b66;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 6px;
+    }
+
+    .highlight {
+        background-color: #003366;
+        color: #ffd700;
+        padding: 6px 10px;
+        border-radius: 6px;
+        display: inline-block;
+    }
+
+    .job-opportunity {
+        background-color: #002b66;
+        color: #ffd700;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .job-opportunity h2,
+    .job-opportunity li,
+    .job-opportunity strong,
+    .job-opportunity p {
+        color: #ffd700;
+    }
+
+    .job-opportunity .highlight {
+        background-color: #003366;
+        color: #ffd700;
+    }
+
+    footer {
+        background-color: #000d33;
+        color: #ffd700;
+        text-align: center;
+        padding: 20px;
+        margin-top: 50px;
+        border-top: 2px solid #ffd700;
+    }
+
+    canvas {
+        background-color: #002b66;
+        border-radius: 10px;
+    }
+</style>
+
+<h2 style="text-align: center; margin-top: 30px;">📈 Current Job Market Trends</h2>
+
+<canvas id="jobChart" width="600" height="300" style="margin: 40px auto; display: block;"></canvas>
+
+{{ job_titles|json_script:"job-titles-data" }}
+{{ demand_scores|json_script:"demand-scores-data" }}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const jobTitles = JSON.parse(document.getElementById('job-titles-data').textContent);
+    const demandScores = JSON.parse(document.getElementById('demand-scores-data').textContent);
+
+    const ctx = document.getElementById('jobChart').getContext('2d');
+    const jobChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: jobTitles,
+            datasets: [{
+                label: 'Demand Score',
+                data: demandScores,
+                backgroundColor: '#ffd700',
+                borderColor: '#ffa500',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        color: '#ffd700'
+                    },
+                    grid: {
+                        color: '#003366'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#ffd700'
+                    },
+                    grid: {
+                        color: '#003366'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#ffd700'
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<!-- Job Opportunities Section -->
+<h2 style="text-align: center; margin: 50px 0 20px;">💼 Job Opportunities</h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px;">
+
+    <div class="job-opportunity">
+        <p>There are numerous job opportunities across various sectors in Shertha and nearby areas such as Ahmedabad and Gandhinagar, which serve as major professional hubs in Gujarat.</p>
+    </div>
+
+    <div class="job-opportunity">
+        <h2>🧭 Specific Job Categories</h2>
+        <ul>
+            <li><strong>Technology:</strong> Full Stack Developers, Application Developers, Database Developers, DevOps Engineers.</li>
+            <li><strong>Customer Service:</strong> Customer Care Executives, Support Specialists, Call Center Representatives.</li>
+            <li><strong>Sales & Marketing:</strong> Sales Executives, Area Sales Executives, Brand Management professionals.</li>
+            <li><strong>Project Management:</strong> Project Managers, Product Managers, Business Analysts.</li>
+            <li><strong>Human Resources:</strong> HR Officers and other HR roles.</li>
+            <li><strong>Others:</strong> Accounting Managers, Finance professionals, etc.</li>
+        </ul>
+    </div>
+
+    <div class="job-opportunity">
+        <h2>🔎 Where to Find Job Openings</h2>
+        <ul>
+            <li><span class="highlight">Naukri.com</span> and <span class="highlight">Indeed</span> list numerous openings for Shertha and nearby areas.</li>
+            <li><span class="highlight">LinkedIn India</span> is a great resource for professional networking and job discovery.</li>
+            <li>Check <strong>Company Career Pages</strong> for direct listings from hiring organizations.</li>
+            <li>Use <strong>Recruitment Agencies</strong> that specialize in your industry to find tailored opportunities.</li>
+        </ul>
+    </div>
+
+    <div class="job-opportunity">
+        <h2>🚀 In-Demand Skills</h2>
+        <ul>
+            <li><strong>Technical Skills:</strong> Programming (Java, Python), Database Management, Web Development.</li>
+            <li><strong>Soft Skills:</strong> Communication, Problem-Solving, and Customer Service.</li>
+            <li><strong>Industry-Specific Knowledge:</strong> IT, Manufacturing, and Financial sector experience is a plus.</li>
+        </ul>
+    </div>
+
+</div>
+
+<h1>📊 Job Market Analysis</h1>
+
+<div class="section">
+    <p>
+        Job market analysis involves gathering and interpreting data to understand employment trends, demand for skills,
+        and industry-specific hiring patterns. It helps businesses make informed decisions about hiring, training, and
+        workforce development by identifying in-demand skills and roles.
+    </p>
+</div>
+
+<div class="section">
+    <h2>🔍 Key Aspects of Job Market Analysis</h2>
+    <ul>
+        <li><strong>Analyzing employment data:</strong> Examining historical and current employment data to identify patterns and projections.</li>
+        <li><strong>Understanding workforce demographics:</strong> Age, education, skills, and diversity to identify gaps.</li>
+        <li><strong>Examining wage and salary info:</strong> Understanding compensation competitiveness and trends.</li>
+        <li><strong>Identifying skills gaps:</strong> Finding mismatches between employer needs and available skills.</li>
+        <li><strong>Analyzing trends:</strong> Discovering shifts and emerging job market patterns.</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>💡 Benefits of Job Market Analysis</h2>
+    <ul>
+        <li><strong>Informed hiring & training:</strong> Make smart decisions based on data.</li>
+        <li><strong>Better recruitment:</strong> Focus efforts on in-demand roles and skills.</li>
+        <li><strong>Career guidance:</strong> Guide job seekers with market insights.</li>
+        <li><strong>Policy & strategy:</strong> Help governments and companies plan better.</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>🛠️ Tools and Techniques Used</h2>
+    <ul>
+        <li><strong>Job boards:</strong> Reveal what roles are in demand.</li>
+        <li><strong>Resume databases:</strong> Show available talent and trends.</li>
+        <li><strong>Labor stats:</strong> Government data for macro insights.</li>
+        <li><strong>Employer surveys:</strong> Direct input from hiring companies.</li>
+        <li><strong>Analytics tools:</strong> Analyze trends using tech and data science.</li>
+    </ul>
+</div>
+
+{% endblock %}
+

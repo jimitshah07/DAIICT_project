@@ -1,0 +1,150 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Career Advisor{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #001f3f, #002b5c); /* Gradient Dark Blue */
+        color: #ffd700; /* Golden Text */
+    }
+
+    /* Navbar */
+    nav {
+        background-color: #001f3f;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+
+    nav ul li a {
+        color: #ffd700;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #ffa500; /* Lighter Golden on Hover */
+    }
+
+    /* Branding/Logo */
+    nav .logo {
+        font-size: 24px;
+        color: #ffd700;
+        font-weight: bold;
+    }
+
+    /* Section-specific Styles */
+    .welcome {
+        padding: 60px;
+        text-align: center;
+        background-color: #002b5c;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 40px;
+        background-color: #003366;
+        text-align: center;
+    }
+
+    .feature-box {
+        border: 1px solid #ffd700;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #002b5c;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+    }
+
+    .how-it-works {
+        background-color: #001f3f;
+        padding: 50px;
+        text-align: center;
+    }
+
+    .get-started {
+        padding: 40px;
+        background-color: #000814;
+        color: #ffd700;
+        text-align: center;
+    }
+
+    .get-started a {
+        background-color: #ffd700;
+        color: #001f3f;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .get-started a:hover {
+        background-color: #ffcc00;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #001f3f;
+        color: #ffd700;
+        font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><center>Career Advisor</center></h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="#">Skill Assessment</a></li>
+            <li><a href="{% url 'job_market' %}">Job Market</a></li>
+            <!-- <li><a href="#">Resume Tips</a></li> -->
+            <li><a href="#">Career Path</a></li>
+            <li><a href="#">Network</a></li>
+            <li><a href="#">Chat Bot</a></li>
+            <li><a href="#">Personalised AI</a></li>
+            <li><a href="#">Companies And Colonies</a></li>
+            
+        </ul>
+    </nav>  
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        &copy; 2025 Career Advisor. All rights reserved.
+    </footer>
+
+</body>
+</html>
+<!-- {% url 'skill_assessment_start' %} -->
