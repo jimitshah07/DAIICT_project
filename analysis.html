@@ -2,6 +2,20 @@
 <html>
 <head>
     <title>Step 3: Here's Where You Stand</title>
+    <style>
+        h2, h3 {
+            color: #2c3e50;
+        }
+        ul {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+    
 </head>
 <body>
     <h2>📊 Market Analysis</h2>
@@ -27,6 +41,15 @@
     <ul>
         {% for tech in analysis.suggested %}
             <li>{{ tech }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if analysis.roadmap %}
+    <h3>🗺️ Personalized Roadmap</h3>
+    <ul>
+        {% for step in analysis.roadmap %}
+            <li>{{ step }}</li>
         {% endfor %}
     </ul>
     {% endif %}

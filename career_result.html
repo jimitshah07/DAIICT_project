@@ -1,0 +1,9 @@
+<h2>Your Recommended Career: Data Science</h2>
+
+<!-- Button to fetch professionals -->
+<a href="{% url 'show_professionals' %}?career={{ recommended_career|urlencode }}">
+    <button>Find Professionals in {{ recommended_career }}</button>
+  </a>
+  
+  <button>Find Data Science Professionals</button>
+</a>

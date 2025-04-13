@@ -26,4 +26,11 @@ urlpatterns = [
     path('analysis/', views.analysis_view, name='analysis'),
     path('landing/',views.landing_view,name="landing"),
     path('roadmap/', views.roadmap_view, name='roadmap'),
+    path('fetch-linkedin-profiles/', views.fetch_linkedin_profiles, name='fetch_linkedin_profiles'),
+    path('display-linkedin-profiles/', views.display_linkedin_profiles, name='display_linkedin_profiles'),
+    path('professionals/', views.show_professionals, name='show_professionals'),
+    path('', views.select_career, name='select_career'), 
+
+
+
 ]

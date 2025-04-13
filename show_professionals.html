@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommended Professionals</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7f6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 600px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+
+    .professional {
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #0073b1;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005f88;
+    }
+
+    button:active {
+      background-color: #004d73;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Recommended Professionals for {{ career }}</h2>
+    <p>{{ ai_summary }}</p>
+
+    {% for professional in professionals %}
+    <div class="professional">
+      <h3>{{ professional.name }}</h3>
+      <a href="{{ professional.linkedin }}" target="_blank">
+        <button>Connect with {{ professional.name }} on LinkedIn</button>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+</body>
+</html>
